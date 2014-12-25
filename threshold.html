@@ -1,0 +1,65 @@
+<html>
+<body>
+
+<head>
+	<style>
+		#main-box { 
+			background: teal;
+			height: 800px;
+		}
+
+		.smlbx {
+			background: yellow;
+			height: 200px;
+			width: 200px;
+			margin: 20px;
+		}
+	</style>
+</head>
+
+<div id="main-box">
+	<div class="smlbx"></div>
+	<div class="smlbx"></div>
+	<div class="smlbx"></div>
+	<div class="smlbx"></div>
+	<div class="smlbx"></div>
+	<div class="smlbx"></div>
+	<div class="smlbx"></div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<script>
+	var smlbx2 = $('.smlbx:eq(2)');
+	var smlbx = $('.smlbx')
+	var mainbx = $('#main-box');
+	var mainbxBottom = mainbx.position().top + mainbx.outerHeight(true);
+
+	// alert(smlbx.length);
+	// alert(smlbx.offset().top);
+	// alert(mainbx.position().top);
+	// alert(mainbxBottom)
+	// alert(smlbx.position().top);
+	
+	// for (var i=0; i<smlbx.length; i++) {
+	// 	alert($('.smlbx:eq('+ i +')').offset().top);
+	// }
+
+	for (var i=0; i<smlbx.length; i++) {
+
+		if ($('.smlbx:eq('+ i +')').offset().top + $('.smlbx:eq('+ i +')').outerHeight(true) > mainbxBottom){
+				$('.smlbx:eq('+ i +')').css("display", "none");
+				if ($('.smlbx:eq('+ i +')').css("display") == "none" ){
+					alert('hi');
+    	    	}
+		}
+	}
+
+
+
+
+
+	
+</script>
+</body>
+</html>
