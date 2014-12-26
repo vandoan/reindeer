@@ -1,0 +1,100 @@
+<html>
+<body>
+
+<head>
+	<style>
+		#main-box { 
+			background: teal;
+		}
+
+		.article {
+			background: yellow;
+			height: 800px;
+			width: 200px;
+			margin: 500px 20px;
+		}
+
+		.buttonBox {
+			width: 40px;
+			height:50px;
+			position: fixed;
+			left:20px;
+			top:20px;
+			display:none;
+			background-color: red;
+		}
+	</style>
+</head>
+
+<div id="main-box">
+	<div class="article"></div>
+	<div class="article"></div>
+	<div class="article"></div>
+	<div class="article"></div>
+	<div class="article"></div>
+	<div class="article"></div>
+	<div class="article"></div>
+	<div class="buttonBox"></div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<script>
+	// for (var i=0; i<smlbx.length; i++) {
+
+	// 	if ($('.smlbx:eq('+ i +')').offset().top + $('.smlbx:eq('+ i +')').outerHeight(true) > mainbxBottom){
+	// 			$('.smlbx:eq('+ i +')').css("display", "none");
+	// 			if ($('.smlbx:eq('+ i +')').css("display") == "none" ){
+	// 				alert('hi');
+ //    	    	}
+	// 	}
+	// }
+
+	// alert(smlbx.length);
+	// alert(smlbx.offset().top);
+	// alert(mainbx.position().top);
+	// alert(mainbxBottom)
+	// alert(smlbx.position().top);
+	
+	// for (var i=0; i<smlbx.length; i++) {
+	// 	alert($('.smlbx:eq('+ i +')').offset().top);
+	// }
+
+var buttonBox = $('.buttonBox');
+var btnBxTop = buttonBox.offset().top;
+var btnBxBottom = buttonBox.outerHeight(true);
+var article = $(".article");
+var articleBottom = article.offset().top + article.outerHeight(true);
+
+$(window).scroll(function(){
+	for (var i=0; i<article.length; i++){
+		if ( btnBxTop > $('.article:eq('+i+')').offset().top && btnBxTop < $('.article:eq('+i+')').offset().top + $('.article:eq('+i+')').outerHeight(true)) {
+			buttonBox.css('display', 'block');
+			console.log('i work');
+		} else {
+			if ( btnBxTop > $('.article:eq('+i+')').offset().top && btnBxTop + $('.article:eq('+i+')').outerHeight(true)) {
+					buttonBox.css('display', 'none')
+				}
+		}
+	}	
+});
+
+
+// alert($('.article:eq(1)').offset().top);
+
+// when the bottom of the image >= window port
+
+// the scollBox appears
+
+// else if disappears
+
+// if it hits less than 100px from the bottom
+
+//it disappears 
+
+
+
+	
+</script>
+</body>
+</html>
