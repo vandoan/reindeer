@@ -61,24 +61,24 @@
 	// }
 
 var buttonBox = $('.buttonBox');
-var btnBxTop = buttonBox.offset().top;
+var scrollTop = $(window).scrollTop();
+var btnBxTop = buttonBox.scrollTop();
 var btnBxBottom = buttonBox.outerHeight(true);
 var article = $(".article");
 var articleBottom = article.offset().top + article.outerHeight(true);
 
 $(window).scroll(function(){
 	for (var i=0; i<article.length; i++){
-		if ( btnBxTop > $('.article:eq('+i+')').offset().top && btnBxTop < $('.article:eq('+i+')').offset().top + $('.article:eq('+i+')').outerHeight(true)) {
-			buttonBox.css('display', 'block');
-			console.log('i work');
-		} else {
-			if ( btnBxTop > $('.article:eq('+i+')').offset().top && btnBxTop + $('.article:eq('+i+')').outerHeight(true)) {
+		if ( scrollTop > $('.article:eq('+i+')').offset().top && scrollTop < $('.article:eq('+i+')').offset().top + $('.article:eq('+i+')').outerHeight()){
+				buttonBox.css('display', 'block');
+				console.log('i work');
+			} else {
 					buttonBox.css('display', 'none')
-				}
-		}
-	}	
+			}
+		};
+	console.log($(window).scrollTop());	
+	alert($('.article:eq(0)').offset().top + $('.article:eq(0)').height());
 });
-
 
 // alert($('.article:eq(1)').offset().top);
 
