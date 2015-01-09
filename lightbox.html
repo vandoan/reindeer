@@ -1,0 +1,132 @@
+<html>
+	<head>
+<style>
+	#lightbox {
+	position: absolute;
+	top: 0;
+	z-index: 1001;
+	display: none;
+	width: 100%;
+	height: 1000px;	
+}
+
+img { 
+	width: 100%; height: 100%;
+}
+#lightbox-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 150%;
+	background: #000000;
+	z-index: 1000;
+	display: none;
+}
+#close {
+	width:20px;
+	height:20px;
+	top: 20px;
+	right: 20px;
+	position:absolute;
+	background-color:orange;
+}
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+</script>
+
+<script>
+var imgIndex = 1;
+// display the lightbox
+function lightbox(insertContent){
+
+	// add lightbox element and background
+	if($('#lightbox').size() == 0){
+		var lightbox = $('<div id="lightbox"></div>');
+		var litebg = $('<div id="lightbox-bg"/>');
+		$(litebg).click(function(e){
+			closeLightbox();
+		});
+	// add lightbox  first image
+		$('body').append(litebg);
+		$('body').append(lightbox);
+		$('#lightbox').prepend('<img id="tour-1" src="tour-1.jpg" usemap="#btn-list" />');
+	}
+	
+	$('#lightbox').show();
+	$('#lightbox-bg').show();
+
+}
+
+// light box left button
+function leftBtn(){
+	if (imgIndex === 1) {
+		$('img').remove();
+		$('#lightbox').prepend('<img id="tour-3" src="tour-3.jpg" usemap="#btn-list" />');
+		imgIndex = 3;
+		console.log(imgIndex);
+
+	} else if (imgIndex === 2) {
+		$('img').remove();
+		$('#lightbox').prepend('<img id="tour-1" src="tour-1.jpg" usemap="#btn-list" />');
+		imgIndex = 1;
+		console.log(imgIndex);
+
+	} else if (imgIndex === 3) {
+		$('img').remove();
+		$('#lightbox').prepend('<img id="tour-2" src="tour-2.jpg" usemap="#btn-list" />');
+		imgIndex = 2;
+		console.log(imgIndex);
+	}
+}
+
+// light box right button
+function rightBtn(){
+	if (imgIndex === 1) {
+		$('img').remove();
+		$('#lightbox').prepend('<img id="tour-2" src="tour-2.jpg" usemap="#btn-list" />');
+		imgIndex = 2;
+		console.log(imgIndex);
+
+	} else if (imgIndex === 2) {
+		$('img').remove();
+		$('#lightbox').prepend('<img id="tour-3" src="tour-3.jpg" usemap="#btn-list" />');
+		imgIndex = 3;
+
+	} else if (imgIndex === 3) {
+		$('img').remove();
+		$('#lightbox').prepend('<img id="tour-1" src="tour-1.jpg" usemap="#btn-list" />');
+		imgIndex = 1;
+		console.log(imgIndex);
+	}
+}
+
+// close lightbox
+function closeBtn(){
+	$('#lightbox').hide();
+	$('#lightbox-bg').hide();
+}
+</script>
+
+
+	</head>
+
+	<body>
+<a href="javascript:lightbox();"><img src="welcome.jpg" /></a>
+
+<map name="btn-list" id="btn-list">
+    <area href="javascript:leftBtn();" shape="rect" coords="120,1174,4,13" alt="left"/>
+    <area href="javascript:rightBtn();" shape="rect" coords="1430,200,1000,1000" alt="right"/>
+    <area href="javascript:closeBtn();" shape="rect" coords="1430,0,1000,244" alt="right"/>
+    <area href="javascript:closeBtn();" href="#hp" shape="rect" coords="780,457,1200,520" alt="home-page" />
+    <area  title="send-email" href="#e" shape="rect" coords="780,517,1200,580" alt="send-email" />
+    <area title="editor-letter" href="#l" shape="rect" coords="780,570,1200,640" alt="editor-letter" />
+</map>
+
+
+
+
+</body>
+
+</html>
